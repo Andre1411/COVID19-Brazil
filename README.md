@@ -2,10 +2,10 @@
 This repo contains files related to a Uni project on **machine learning** applied to a datased of COVID19 cases from Brazil.
 ## Dataset features
 *first_smpts:* date of first symptoms  
-*week_smpts:* # week of first symptoms  
-*sex:* # sex M/F/unknown(I)  
-*date.birth:* # date of birth  
-*age:* # age in years  
+*week_smpts:*  week of first symptoms  
+*sex:*         sex M/F/unknown(I)  
+*date.birth:* date of birth  
+*age:* age in years  
 *pregnant:* # pregnant: 1-2-3 trimester, 4:unknown trimester but pregnant, 5: no, 6:male or age<10y, 0 or 9:unknown  
 *race:* # 1:white 2:black 3:yellow 4:brown 5:indigenous, 9:unknown  
 *region:* Region of residence  

@@ -1,5 +1,5 @@
 # COVID19-Brazil
-This repo contains files related to a Uni project on **machine learning** applied to a datased of COVID19 cases from Brazil.
+This repo contains files related to a Uni group project on **machine learning** applied to a datased of COVID19 cases from Brazil. The aim was to investigate relevant questions such as predicting if a patient is in need of intensinve care unit (ICU) and if dying for covid19 is related to any subject characteristics or health situation and so if it is possible to predict the outcome from the other covariates.
 ## Dataset features
 - *first_smpts:* date of first symptoms  
 - *week_smpts:* week of first symptoms  

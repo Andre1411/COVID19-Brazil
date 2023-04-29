@@ -40,9 +40,6 @@ After the remotion of all the NAs and unknowns the dataset contains 111801 subje
 After the NaN and Unknown values removal, the values of the variable "*outcome*" (1,2,3) were unbalanced: class 3,
 referring to non-covid-death, occurred in only the 0.4% of the subjects, so it was hard to be
 predicted by the models. For this reason it has been decided to focus only on covid-death and to not consider other possible death reasons.  
-The next step was to reduce the size of the dataset because using the whole dataset is not
-computationally feasible for our laptops: first, we had a quick analysis using reduced dataset with
-several proportions (75%,50%,25%) with Logistic Models and then we compared the outcomes in
-order to check the possibility to adopt reduced dataset without influencing the goodness of the
-results. As a result, we decided to work with only the 25 % of data, randomly sampled from the
-original dataset.
+The next step was to reduce the size of the dataset for computational resons. A quick analysis using reduced dataset with
+several proportions (75%,50%,25%) and Logistic Models was performed, comparing the outcomes to ensure that using the reduced dataset wouldn't influence the goodness of the
+results. In the end it has been decided to work with 25 % of data, randomly sampled from the original dataset.

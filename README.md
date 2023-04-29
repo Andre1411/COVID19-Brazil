@@ -1,7 +1,7 @@
 # COVID19-Brazil
 This repo contains files related to a Uni project on machine learning applied to a datased of COVID19 cases from Brazil.
 ## Dataset features
-covid19$first_smpts # date of first symptoms__
+covid19$first_smpts # date of first symptoms  
 covid19$week_smpts # week of first symptoms
 covid19$sex # sex M/F/unknown(I)
 covid19$date.birth # date of birth

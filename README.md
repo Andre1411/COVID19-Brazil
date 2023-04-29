@@ -30,3 +30,16 @@ This repo contains files related to a Uni group project on **machine learning** 
 - *hospital:* Hospitalization? 1:yes, 2:no, 9:unknown  
 - *ICU:* # admitted to ICU? 1:yes, 2:no, 9:unknown  
 - *outcome:* 1:cure 2:death 3:death of other cause, 9: unknown  
+## NAs considerations:
+The complete dataset contains 688040 subjects; however, it contains lots of NAs / unknowns
+(27,24% of the cells in the data set are NAs / unknowns).
+Since it is a big dataset, the first thing we did was to remove all the NAs.
+Does removing NAs produce a deviation of the original distribution of the dataset?
+We checked the distribution of all the covariates before and after removing the unknowns and we
+found that:
+• Almost all the covariates keep the original class proportions, meaning that the
+predominant class in the full dataset is also the most prevalent in the reduced one.
+• the variable recording the greatest change is cardio.dis, from 33.81% class 1 in the full
+dataset to 54.83% class 1 in the reduced one.
+Consequently, we can affirm that the reduced dataset is not deviated by NAs removal.
+After the remotion of all the NAs and unknowns the dataset contains 111801 subjects.

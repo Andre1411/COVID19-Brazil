@@ -1,7 +1,6 @@
 ################################
 ### 				0. DATA LOADING
 rm(list=ls())
-setwd("C:/Users/ASUS/OneDrive - Università degli Studi di Padova/uni/Magistrale/1° anno/2° - Machine learning for bioengineering/R_codes/covid19_brazil.data")
 covid19 <- read.table('managedData.dat',header = T) # colClasses ='factor')
 # A.A. : managedData is a file containing categorical variables with Os (No) and 1s (Yes) levels
 ################################

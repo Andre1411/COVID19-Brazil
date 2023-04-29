@@ -30,9 +30,19 @@ This repo contains files related to a Uni group project on **machine learning** 
 - *hospital:* Hospitalization? 1:yes, 2:no, 9:unknown  
 - *ICU:* # admitted to ICU? 1:yes, 2:no, 9:unknown  
 - *outcome:* 1:cure 2:death 3:death of other cause, 9: unknown  
-## NAs considerations:
-27,24% of the cells in the data set are NAs or unknowns.
+## NAs considerations
+27,24% of the cells in the dataset are NAs or unknowns.
 Since it contains 688040 subjects, it has been decided to remove all the rows (subjects) containing covariates with NAs.
 It has been checked that the covariates' distribution doesn't change by doing so, finding that all the covariates keep their original class proportions: the
-predominant class in the full dataset is the most prevalent also in the reduced one.
+predominant class in the full dataset is the most prevalent also in the reduced dataset.
 After the remotion of all the NAs and unknowns the dataset contains 111801 subjects.
+## Data pre-processing
+After the NaN and Unknown values removal, the values of the variable "*outcome*" (1,2,3) were unbalanced: class 3,
+referring to non-covid-death, occurred in only the 0.4% of the subjects, so it was hard to be
+predicted by the models. For this reason it has been decided to focus only on covid-death and to not consider other possible death reasons.  
+The next step was to reduce the size of the dataset because using the whole dataset is not
+computationally feasible for our laptops: first, we had a quick analysis using reduced dataset with
+several proportions (75%,50%,25%) with Logistic Models and then we compared the outcomes in
+order to check the possibility to adopt reduced dataset without influencing the goodness of the
+results. As a result, we decided to work with only the 25 % of data, randomly sampled from the
+original dataset.

@@ -43,7 +43,7 @@ predicted by the models. For this reason it has been decided to focus only on co
 The next step was to reduce the size of the dataset for computational resons. A quick analysis using reduced dataset with
 several proportions (75%,50%,25%) and Logistic Models was performed, comparing the outcomes to ensure that using the reduced dataset wouldn't influence the goodness of the
 results. In the end it has been decided to work with 25 % of data, randomly sampled from the original dataset.
-##
+## Dataset splitting
 The reduced dataset was split into a Training Set (70%) and several Test Sets, containing 100,80,60,40,20 and 10 % of the remaining data of the reduced
 dataset respectively.
 This decision was made in order to check if a smaller test set can cover
@@ -51,3 +51,4 @@ the variability of the original data.
 If the performance of different models is comparable in all the test sets, it proves that the variance
 is covered. (https://www.baeldung.com/cs/train-test-datasets-ratio)
 For each model, mean accuracy, sensitivity and specificity across all the testing sets were computed.
+##

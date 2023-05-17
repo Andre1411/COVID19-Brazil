@@ -220,4 +220,32 @@ Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity |
 | mod.form2.2 | 0.847 | 0.954 | 0.702 |
 | mod.form2.4 | 0.866 | 0.970 | 0.724 |
 
+In order to define the best model, both the mean accuracy over the testing sets and
+the balance between sensitivity and specificity have been considered. High sensitivity leads to a better prediction of
+the class 0 (subjects not admitted in ICU or cured patients) while high specificity provides a
+better identification of the class 1. The intent is to obtain a model able to detect the True Positives
+but also to discard the True Negatives: for this reason the models with the best sens./spec.
+balance are the ones selected.  
 
+**The best model to predict ICU is the logistic using the mod.form1.6:**
+| Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity |
+| ----- | ----- | ----- | ----- |
+| mod.form1.6 | 0.591 | 0.569 | 0.623 |  
+
+**The best model to predict the outcome is the boosting using the mod.form2.4:**
+| Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity |
+| ----- | ----- | ----- | ----- |
+| mod.form2.4 | 0.878 | 0.990 | 0.762 |  
+
+# Final considerations
+The objective explained at the beginning of the analysis was to select a model that could be useful to
+predict in advance if a patient will have to go into ICU, in order to avoid all the problems related to
+hospital’s resource handling that we mentioned in the introduction.  
+Sadly, it cannot be said that this goal has been scored successfully, because of the low values of
+sens/spec achieved by the best model selected (which is the one with the highest balance of
+these indexes). Furthermore, the results in terms of accuracy are not satisfying if compared to the
+ones obtained by chance.  
+The second aim was understanding if dying for covid19 is related with subject characteristics and
+health situation and so if “outcome” can be predicted using the other covariates.
+As seen previously, the best model identified has a quite good accuracy, especially
+compared with the prediction by change.

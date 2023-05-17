@@ -204,6 +204,20 @@ consequently we can affirm with more certainty which variables are the most rele
 | mod.form2.4 | 0.728 | 0.802 | 0.607 | 1 | 0.5 |
 
 
+#### Boosting
+Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity |
+| ----- | ----- | ----- | ----- |
+| mod.form1.4 | 0.611 | 0.884 | 0.240 |
+| mod.form1.6 | 0.608 | 0.877 | 0.242 |
+| mod.form2.2 | 0.878 | 0.991 | 0.724 |
+| mod.form2.4 | 0.878 | 0.990 | 0.762 |
 
+#### Random forest
+| Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity |
+| ----- | ----- | ----- | ----- |
+| mod.form1.4 | 0.604 | 0.880 | 0.227 |
+| mod.form1.6 | 0.602 | 0.877 | 0.229 |
+| mod.form2.2 | 0.847 | 0.954 | 0.702 |
+| mod.form2.4 | 0.866 | 0.970 | 0.724 |
 
 

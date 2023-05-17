@@ -1,5 +1,5 @@
 # COVID19-Brazil
-University group project for a **machine learning** course on a datased of COVID19 cases from Brazil.
+University group project for the course **Machine Learning for bioengineering** on a datased of COVID19 cases from Brazil.
 ## Objective
 The aim was to investigate relevant questions such as predicting if a patient is in need of intensinve care unit (ICU) and if dying for covid19 is related to any subject characteristics or health situation and so if it is possible to predict the outcome from the other covariates.
 ## Dataset features
@@ -92,66 +92,47 @@ some covariates and evaluating the different solutions with AIC and BIC index.
 In the end, two formulas have been selected for each target variable (outcome and ICU) and they have been tried in all the other
 approaches beyond logistic regression.
 ## MODEL USED FOR THE ANALYSIS
-### LOGISTIC AND MULTINOMIAL MODELS
-Logistic model was the first approach that we tried, and a useful information that you can derive
-from this model is the variation of the probability of being classified in a certain class respect
+### Logistic and multinomial models
+The logistic model is the first approach that has been tried, and it provides the variation of the probability of being classified in a certain class respect to
 another class when the value of a specific covariate changes.
-So, we find interesting answering the following questions:
-Everyone know that if a patient goes into ICU its heath is really compromised, therefore the risk of
-dying increase, however how much does it increase?
-We find that the probability of dying of covid19 respect the probability of recovering is 5.44
-greater if a patient goes into ICU.
-ODDS RATIO of P(outcome = 1)/P(outcome = 0) is 5.44 greater if a patient go into ICU (ICU goes
-from 0 to 1).
-In order to select the threshold for classify the two classes (0,1), we use the Roc Curve method.
-The threshold selected by the ROC is where TPR+FPR is maximized. We decide to use it since, as
-said previously, we are looking about a model with a good balance between sensitivity and
-specificity.
-Doing that, we lose something in the overall accuracy respect other threshold due to the not
-symmetric distribution of the two classes.
-Even if both ICU and outcome have just 2 classes, we fit a multinomial classification (only on
-outcome) just to see if the results were the same of the logistic model.
-From the table at point 4.3, you can see that the outcomes are slightly different.
-We had looks about the coefficient estimated by the two approaches: they are close.
-Therefore, we think that the discrepancy is due to different estimation algorithms.
-###  TREE-BASED MODEL
-Decision tree is a classification algorithm that has one important feature compared with the other
-approaches: it can produce a graphical visualization of the process through which the classification
-is performed.
-This output can really be useful because gives the possibility to have an easy interpretation on
-what is going on to a person that is not an expert of statistic and machine learning.
-So, our idea is to use this approach to produce a graph able to tell a physician which are the most
-relevant subjects characteristic that influence the probability of going into ICU, for example.
-However, to achieve an accuracy comparable with the other methods, the tree has to be made by
-one hundred nodes; therefore, a graphical representation of such big tree is not easily
-understandable.
-So, is it worth using tree-based model? No, since in addiction of not being able of produce a useful
-graph, also the classification performance is not good (see point 4.3).
-### SVM MODEL
-We tried a support vector machine approach since usually it has great performances. Because of
-the high computational effort required to run the method with the reduced dataset, we decide to
-down-sample the data considering only the 25 % of the whole ones. We use the same proportions
-to create the training set and the testing sets. In order to obtain the most suitable model we
-perform the tuning of the models using several types of kernels (“linear”, “polynomial”, “radial”)
-and different parameters. From the best ones we derive the performance.
-### BOOSTING MODELS
-Since the performances of the previous models were good but not enough satisfying, we decided
+So, since if a patient goes into ICU its heath is compromised, the risk of death increases. But how much does it increase?
+It has been found that, if a patient goes into ICU, the probability of dying of covid19 is 5.44 greater than the probability of recovering.
+ODDS RATIO of P(outcome = 1)/P(outcome = 0) is 5.44 greater if a patient goes into ICU.
+In order to select the classification threshold, the Roc Curve method has been used, selecting the probablity that maximizes TPR+FPR.  
+Even if both ICU and outcome only have 2 classes, also a multinomial classification model has been fit (only on outcome) to see if the results were the same of the logistic regression.
+As reported in the table at point 4.3, they are slightly different, but the coefficients estimated are very close.
+Therefore, therefore the difference is assume to be due to estimation algorithms.
+### Tree-based model
+Decision tree has the advantage of producing a graphical visualization of the process through which the classification
+is performed giving an easy interpretation of what is going on.
+The goal of using this approach is to produce a graph able to tell a physician which subjects characteristic are the most
+relevant to predict the probability of going into ICU, for example.
+However, to achieve an accuracy comparable to the one of the other methods, the tree has to be made of at least
+100 nodes, compromising the readablity of the graph.
+Therefore it has been decided that using a classification tree is not worth it, since, in addiction of not being able to produce a useful
+graph, it also has worse performance compared to other models.
+### SVM model
+The following model that has been tried is support vector machine, since it is notorious for its great performances. Because of
+the high computational effort required to run it, the dataset has been further down-sampled to the 25%. The same proportions hve been used to create the train and the test sets. In order to obtain the most suitable model, the tuning of the models has been performed using several types of kernels (“linear”, “polynomial”, “radial”)
+and different parameters. The performance in the table are dervide from the best performing one.
+### Boosting model
+Since the performances of the previous models were good but not enough satisfying, it has been decided
 to try out this method to check if a combination of week learners could do better than a single
-strong one.
-### RANDOM FOREST models
+strong model.
+### Random forest model
 Random forest (RF) is part of the bootstrap aggregation family, which has the goal of improving
-the prediction respect standard decision trees and to find a way to deal with a huge number of
+the prediction respect to standard decision trees and to find a way to deal with a huge number of
 predictors.
 In particular, random forest selects randomly a subset of covariates to building each tree.
 This approach reduces tree similarity, increase flexibility, and hopefully leads to a better
 prediction.
-Furthermore, RF produces a useful graph indicating which are the variables that better reduce
-impurity when used for splitting. The ones resulting from our model are the followings:
-At this point, we found interesting to understand if the same predictors were the most important
-also for the other models.
-So, we build the following table, comparing them to the covariates used in the first splits of the
-decision tree model and the ones with the highest absolute value of the coefficients estimated by
-the logistic model (of course only if statistically significant for the model).
+Furthermore, it produces a useful graph indicating which variables reduce impurity the most when used for splitting. The followings have been found:
+![rf6 1 4](https://github.com/Andre1411/COVID19-Brazil/assets/107708093/b34e9e03-8ca7-4c1b-b458-f99bb64ade6a)
+![rf6 1 6](https://github.com/Andre1411/COVID19-Brazil/assets/107708093/d89e68cb-127b-4b35-891f-36b96368c40a)
+![rf6 2 2](https://github.com/Andre1411/COVID19-Brazil/assets/107708093/4c5a2f91-254b-4676-87a1-7aca646ee9b7)
+![rf6 2 4](https://github.com/Andre1411/COVID19-Brazil/assets/107708093/f5c3191f-276c-46c4-b2fb-694e564cac1b)  
+In order to understand if the same predictors were the most important
+also for the other models, the following table has been built:
 #### Most important predictors
 || ICU | outcome |
 | ------------- | ------------- | ------------- |
@@ -161,3 +142,68 @@ the logistic model (of course only if statistically significant for the model).
 
 Overall, it turns out that almost the same predictors were selected to be the most important,
 consequently we can affirm with more certainty which variables are the most relevant.
+
+## Model performance, evaluation and comparison
+|||
+| ---- | ---- |
+| Mean prediction by chance for ICU (%): | 0.577 |
+| Mean prediction by chance for outcome (%): | 0.618 |
+
+#### Logistic
+| Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity |
+| ----- | ----- | ----- | ----- |
+| mod.form1.4 | 0.583 | 0.535 | 0.648 |
+| mod.form1.6 | 0.591 | 0.569 | 0.623 |
+| mod.form2.2 | 0.728 | 0.755 | 0.682 |
+| mod.form2.4 | 0.727 | 0.756 | 0.681 |
+
+#### Multinomial
+| Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity |
+| ----- | ----- | ----- | ----- |
+| mod.form2.2 | 0.735 | 0.824 | 0.591 |
+| mod.form2.4 | 0.732 | 0.820 | 0.591 |
+
+#### Decision tree without pruning
+| Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity |
+| ----- | ----- | ----- | ----- |
+| mod.form1.4 | 0.599 | 0.808 | 0.313 |
+| mod.form1.6 | 0.597 | 0.808 | 0.310 |
+| mod.form2.2 | 0.725 | 0.806 | 0.594 |
+| mod.form2.4 | 0.726 | 0.805 | 0.597 |
+
+#### Decision tree with pruning
+| Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity | Terminal nodes |
+| ----- | ----- | ----- | ----- | ----- |
+| mod.form1.4 | 0.599 | 0.809 | 0.312 | 93 |
+| mod.form1.6 | 0.603 | 0.823 | 0.301 | 89 |
+| mod.form2.2 | 0.728 | 0.806 | 0.601 | 45 |
+| mod.form2.4 | 0.730 | 0.806 | 0.608 | 37 |
+
+#### SVM linear kernel
+| Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity |
+| ----- | ----- | ----- | ----- |
+| mod.form1.4 | 0.579 | 0.889 | 0.163 |
+| mod.form1.6 | 0.579 | 0.889 | 0.163 |
+| mod.form2.2 | 0.696 | 0.718 | 0.661 |
+| mod.form2.4 | 0.696 | 0.718 | 0.661 |
+
+#### SVM polynomial kernel
+| Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity | Cost | Degree |
+| ----- | ----- | ----- | ----- | ----- | ----- |
+| mod.form1.4 | 0.609 | 0.875 | 0.25 | 10 | 3 |
+| mod.form1.6 | 0.605 | 0.916 | 0.186 | 10 | 5 |
+| mod.form2.2 | 0.725 | 0.810 | 0.584 | 10 | 2 |
+| mod.form2.4 | 0.723 | 0.807 | 0.587 | 10 | 2 |
+
+#### SVM radial kernel
+| Model Formula | Mean Accuracy | Mean Sensitivity | Mean Specificity | Cost | Gamma |
+| ----- | ----- | ----- | ----- | ----- | ----- |
+| mod.form1.4 | 0.602 | 0.871 | 0.240 | 5 | 0.1 |
+| mod.form1.6 | 0.605 | 0.746 | 0.396 | 0.1 | 0.5 |
+| mod.form2.2 | 0.732 | 0.825 | 0.584 | 1 | 0.5 |
+| mod.form2.4 | 0.728 | 0.802 | 0.607 | 1 | 0.5 |
+
+
+
+
+

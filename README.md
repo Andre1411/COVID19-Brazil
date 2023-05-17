@@ -53,4 +53,22 @@ the variability of the original data.
 If the performance of different models is comparable in all the test sets, it proves that the variance
 is covered. (https://www.baeldung.com/cs/train-test-datasets-ratio)
 For each model, mean accuracy, sensitivity and specificity across all the testing sets were computed.
-##
+## Inferential analysis
+ICU and outcome are the target variables to be predicted using information about the other covariates.
+A perfect ideal classificator would predict the outcomes correctly with 100% accuracy, but a real one will for sure make some mistake.
+This leads to an important question:
+Is it worse predict “yes” (for example that a patient will go into ICU) when instead the true class is
+“no” (the patient will not go into ICU) or vice versa?
+In one case it would underestimate the real necessity of ICU units, on the other one it woud overestimate
+it. Answering this question is not trivial, so it has been decided to maintain a good balance between
+the two types of error.
+## Model formula selection
+The covariates to be included in our models have been selected by creating a formula with all the covariates, fitting a logistic model and selecting just the predictors with a statistically significant estimated coefficient.
+On top of that, it has been verified if it was possible to simplify even further the model removing
+some covariates and evaluating the different solutions with AIC and BIC index.  
+ICU  
+| Model formula | Mean accuracy | Mean sensitivity | Mean specificity | AIC | BIC | Model selected |
+| ------------- | ------------- | ---------------- | ---------------- | --- | --- | ---------------|
+OUTCOME  
+| Model formula | Mean accuracy | Mean sensitivity | Mean specificity | AIC | BIC | Model selected |
+| ------------- | ------------- | ---------------- | ---------------- | --- | --- | ---------------|
